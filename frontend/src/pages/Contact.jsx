@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { contactInfo, services } from '../mock';
+import { contactAPI } from '../api';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
