@@ -117,6 +117,13 @@ const Contact = () => {
                   </div>
                 )}
 
+                {submitError && (
+                  <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg flex items-center">
+                    <AlertCircle className="mr-2" size={20} />
+                    {submitError}
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Personal Information */}
                   <div>
