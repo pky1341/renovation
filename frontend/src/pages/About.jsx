@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Building, Calendar, Star, Clock, Award, Users, CheckCircle, Target } from 'lucide-react';
+import { Building, Calendar, Star, Clock, Award, Users, CheckCircle, Target, Eye } from 'lucide-react';
 import { statistics, companyInfo } from '../mock';
 
 const iconMap = {
