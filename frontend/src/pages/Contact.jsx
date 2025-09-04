@@ -32,28 +32,46 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError('');
+    setSubmitStatus('');
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        serviceType: '',
-        officeSize: '',
-        message: '',
-        urgency: 'standard',
-        budget: '',
-        preferredContact: 'email'
-      });
+    try {
+      // Submit form data to backend API
+      const result = await contactAPI.submitContactForm(formData);
       
-      setTimeout(() => {
-        setSubmitStatus('');
-      }, 5000);
-    }, 1500);
+      if (result.success) {
+        setIsSubmitting(false);
+        setSubmitStatus('success');
+        
+        // Reset form data
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          serviceType: '',
+          officeSize: '',
+          message: '',
+          urgency: 'standard',
+          budget: '',
+          preferredContact: 'email'
+        });
+        
+        // Clear success message after 10 seconds
+        setTimeout(() => {
+          setSubmitStatus('');
+        }, 10000);
+        
+      } else {
+        setIsSubmitting(false);
+        setSubmitError(result.error || 'Something went wrong. Please try again.');
+      }
+      
+    } catch (error) {
+      setIsSubmitting(false);
+      setSubmitError('Network error. Please check your connection and try again.');
+      console.error('Form submission error:', error);
+    }
   };
 
   return (
