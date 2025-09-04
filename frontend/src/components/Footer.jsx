@@ -40,12 +40,12 @@ const Footer = () => {
             <ul className="space-y-2">
               {navigationLinks.map((link) => (
                 <li key={link.name}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-gray-300 hover:text-green-400 transition-colors text-left"
+                  <Link
+                    to={link.href}
+                    className="text-gray-300 hover:text-green-400 transition-colors"
                   >
                     {link.name}
-                  </button>
+                  </Link>
                 </li>
               ))}
               <li>
