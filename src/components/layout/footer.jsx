@@ -8,18 +8,19 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">Click-Office</h3>
+            <h3 className="text-2xl font-bold mb-4">OfficeTransform</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Transforming workspaces across the nation with comprehensive office 
               buyback, removal, and redesign services. We make office transformation 
               simple, sustainable, and stylish.
             </p>
             <div className="flex space-x-4">
-              {[Facebook, Twitter, Linkedin, Instagram].map((Icon, index) => (
-                <a key={index} href="#" className="text-gray-400 hover:text-green-400 transition-colors">
-                  <Icon size={24} />
-                </a>
-              ))}
+              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+                <Facebook size={24} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
+                <Linkedin size={24} />
+              </a>
             </div>
           </div>
 

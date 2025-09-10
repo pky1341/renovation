@@ -15,8 +15,7 @@
 
 # Misc
 .DS_Store
-*.tsbuildinfo
-next-env.d.ts
+*.pem
 
 # Debug
 npm-debug.log*
@@ -30,7 +29,7 @@ yarn-error.log*
 # Vercel
 .vercel
 
-# IDE
-.vscode
-.ideanode_modules/@next/swc-linux-x64-musl/next-swc.linux-x64-musl.node
+# TypeScript
+*.tsbuildinfo
+next-env.d.tsnode_modules/@next/swc-linux-x64-musl/next-swc.linux-x64-musl.node
 node_modules/@next/swc-linux-x64-gnu/next-swc.linux-x64-gnu.node

@@ -1,5 +1,6 @@
-import { ArrowRight, CheckCircle, Play, Recycle, Hammer, Sparkles, Calculator, Camera, MessageCircle, Star, TrendingUp, Zap, DollarSign, Clock } from 'lucide-react'
+import { Recycle, Hammer, Sparkles, Camera, Star, TrendingUp, Zap } from 'lucide-react'
 import Link from 'next/link'
+import { CostCalculator } from '@/components/ui'
 
 export default function HomePage() {
   return (
@@ -114,64 +115,7 @@ export default function HomePage() {
             <p className="text-xl text-gray-600">See how much you can save with our buyback program</p>
           </div>
           
-          <div className="bg-gradient-to-br from-emerald-50 to-green-50 rounded-3xl p-8 max-w-4xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <div className="flex items-center mb-6">
-                  <Calculator size={24} className="text-emerald-600 mr-3" />
-                  <h3 className="text-2xl font-bold">Instant Quote Calculator</h3>
-                </div>
-                
-                <div className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Space Size (sq ft)</label>
-                    <input type="number" placeholder="1,000" className="w-full border border-gray-300 rounded-xl px-4 py-3" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Space Type</label>
-                    <select className="w-full border border-gray-300 rounded-xl px-4 py-3">
-                      <option>Office Space</option>
-                      <option>Retail Store</option>
-                      <option>Restaurant</option>
-                      <option>Medical Office</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">Current Furniture Value</label>
-                    <input type="number" placeholder="₹6,50,000" className="w-full border border-gray-300 rounded-xl px-4 py-3" />
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h4 className="text-xl font-bold mb-6">Your Estimate</h4>
-                <div className="space-y-4">
-                  <div className="flex justify-between">
-                    <span>Transformation Cost:</span>
-                    <span className="font-bold">₹10,00,000</span>
-                  </div>
-                  <div className="flex justify-between text-green-600">
-                    <span>Buyback Credit:</span>
-                    <span className="font-bold">+₹2,65,000</span>
-                  </div>
-                  <div className="border-t pt-4">
-                    <div className="flex justify-between text-xl font-bold">
-                      <span>Net Cost:</span>
-                      <span className="text-emerald-600">₹7,35,000</span>
-                    </div>
-                  </div>
-                  <div className="bg-emerald-50 p-4 rounded-xl mt-4">
-                    <div className="text-sm text-emerald-800">
-                      <strong>ROI:</strong> 35% productivity increase = ₹1,75,000/month value
-                    </div>
-                  </div>
-                </div>
-                <button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold mt-6 transition-colors">
-                  Get Detailed Quote
-                </button>
-              </div>
-            </div>
-          </div>
+          <CostCalculator />
         </div>
       </section>
 
