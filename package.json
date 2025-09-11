@@ -9,11 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^6.16.0",
     "lucide-react": "^0.507.0",
     "mongodb": "^6.10.0",
+    "mysql2": "^3.14.5",
     "next": "^15.1.6",
+    "prisma": "^6.16.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "redis": "^5.8.2",
+    "zod": "^4.1.7"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

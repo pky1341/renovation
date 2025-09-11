@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import mysql from '@/lib/mysql'
+import mysql from '../../../src/lib/mysql'
 
 export async function POST(request) {
   try {
