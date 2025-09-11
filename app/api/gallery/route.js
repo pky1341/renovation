@@ -1,18 +1,20 @@
 import { NextResponse } from 'next/server'
-import mysql from '../../../src/lib/mysql'
+
+const projects = [
+  {
+    id: 1,
+    title: "Modern Tech Office",
+    category: "Corporate",
+    location: "Mumbai",
+    size: "5000 sq ft",
+    timeline: "6 weeks",
+    before_image: "https://images.unsplash.com/photo-1497366216548-37526070297c",
+    after_image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2",
+    description: "Complete transformation of corporate headquarters",
+    featured: true
+  }
+]
 
 export async function GET() {
-  try {
-    const [rows] = await mysql.execute(
-      'SELECT * FROM projects ORDER BY featured DESC, created_at DESC'
-    )
-    
-    return NextResponse.json({ success: true, data: rows })
-  } catch (error) {
-    console.error('Database error:', error)
-    return NextResponse.json(
-      { success: false, message: 'Failed to fetch projects' },
-      { status: 500 }
-    )
-  }
+  return NextResponse.json({ success: true, data: projects })
 }

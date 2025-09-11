@@ -1,18 +1,6 @@
 import { NextResponse } from 'next/server'
-import mysql from '../../../src/lib/mysql'
+import { testimonials } from '../../../src/lib/data'
 
 export async function GET() {
-  try {
-    const [rows] = await mysql.execute(
-      'SELECT * FROM testimonials WHERE approved = TRUE ORDER BY featured DESC, created_at DESC'
-    )
-    
-    return NextResponse.json({ success: true, data: rows })
-  } catch (error) {
-    console.error('Database error:', error)
-    return NextResponse.json(
-      { success: false, message: 'Failed to fetch testimonials' },
-      { status: 500 }
-    )
-  }
+  return NextResponse.json({ success: true, data: testimonials })
 }
