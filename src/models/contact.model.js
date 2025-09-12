@@ -12,26 +12,10 @@ export class ContactModel extends BaseModel {
     })
   }
 
-  async findWithUser(id) {
-    return await this.model.findUnique({
-      where: { id: parseInt(id) },
-      include: {
-        user: {
-          select: { id: true, name: true, email: true }
-        }
-      }
-    })
-  }
-
   async findRecent(limit = 10) {
     return await this.findAll({
       take: limit,
-      orderBy: { createdAt: 'desc' },
-      include: {
-        user: {
-          select: { name: true, email: true }
-        }
-      }
+      orderBy: { createdAt: 'desc' }
     })
   }
 

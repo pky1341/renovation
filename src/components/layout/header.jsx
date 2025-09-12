@@ -26,7 +26,7 @@ export function Header() {
     <header className={`nav-header ${isScrolled ? 'shadow-xl' : ''}`}>
       <Link href="/" className="flex items-center" onClick={closeMenu}>
         <h1 className="text-xl font-bold text-[var(--text-primary)]">
-          OfficeTransform
+          Click-Office
         </h1>
       </Link>
 

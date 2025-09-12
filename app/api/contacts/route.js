@@ -1,15 +1,28 @@
 import { NextResponse } from 'next/server'
-import { ContactController } from '../../../src/controllers/contact.controller.js'
-
-const contactController = new ContactController()
+import prisma from '../../../src/database/connection.js'
 
 export async function POST(request) {
   try {
     const body = await request.json()
-    const result = await contactController.create(body)
     
-    return NextResponse.json(result, { status: 201 })
+    const contact = await prisma.contact.create({
+      data: {
+        name: body.name,
+        email: body.email,
+        phone: body.phone || null,
+        spaceType: body.serviceType || 'office',
+        message: body.message || '',
+        status: 'new'
+      }
+    })
+    
+    return NextResponse.json({ 
+      success: true, 
+      data: contact,
+      message: 'Contact created successfully'
+    }, { status: 201 })
   } catch (error) {
+    console.error('Prisma error:', error)
     return NextResponse.json(
       { success: false, message: error.message },
       { status: 400 }
@@ -20,12 +33,48 @@ export async function POST(request) {
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url)
-    const status = searchParams.get('status')
+    const range = searchParams.get('range')
+    const sort = searchParams.get('sort')
+    const filter = searchParams.get('filter')
+
+    let query = {
+      orderBy: { createdAt: 'desc' }
+    }
+
+    if (range) {
+      const [start, end] = JSON.parse(range)
+      query.skip = start
+      query.take = end - start + 1
+    }
+
+    if (sort) {
+      const [field, order] = JSON.parse(sort)
+      query.orderBy = { [field]: order.toLowerCase() }
+    }
+
+    // Handle filtering
+    if (filter) {
+      const filterObj = JSON.parse(filter)
+      query.where = {}
+      
+      if (filterObj.q) {
+        query.where.OR = [
+          { name: { contains: filterObj.q, mode: 'insensitive' } },
+          { email: { contains: filterObj.q, mode: 'insensitive' } }
+        ]
+      }
+      
+      if (filterObj.status) query.where.status = filterObj.status
+      if (filterObj.spaceType) query.where.spaceType = filterObj.spaceType
+    }
+
+    const contacts = await prisma.contact.findMany(query)
+    const total = await prisma.contact.count({ where: query.where })
     
-    const filters = status ? { status } : {}
-    const result = await contactController.getAll(filters)
+    const response = NextResponse.json({ success: true, data: contacts })
+    response.headers.set('Content-Range', `contacts 0-${contacts.length}/${total}`)
     
-    return NextResponse.json(result)
+    return response
   } catch (error) {
     return NextResponse.json(
       { success: false, message: error.message },

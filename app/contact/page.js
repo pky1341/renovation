@@ -29,7 +29,7 @@ export default function ContactPage() {
     setSubmitStatus('')
     
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('/api/contacts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -136,6 +136,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
+                        suppressHydrationWarning
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                         placeholder="your@email.com"
                       />

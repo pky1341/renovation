@@ -31,6 +31,5 @@ export const validateContactData = async (data) => {
 }
 
 export const contactUpdateSchema = z.object({
-  status: z.enum(['NEW', 'CONTACTED', 'QUOTED', 'COMPLETED']).optional(),
-  userId: z.number().int().positive().optional()
+  status: z.enum(['new', 'contacted', 'quoted', 'completed']).optional()
 })

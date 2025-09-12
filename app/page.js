@@ -1,6 +1,9 @@
 import { Recycle, Hammer, Sparkles, Camera, Star, TrendingUp, Zap } from 'lucide-react'
 import Link from 'next/link'
-import { CostCalculator } from '@/components/ui'
+import CostCalculator from '../src/components/ui/cost-calculator.js'
+import BeforeAfterSlider from '../src/components/ui/before-after-slider.js'
+import ProjectFilter from '../src/components/ui/project-filter.js'
+import AdvancedForm from '../src/components/ui/advanced-form.js'
 
 export default function HomePage() {
   return (
@@ -172,60 +175,54 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Before/After Showcase */}
+      {/* Interactive Before/After Showcase */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Real Transformations</h2>
-            <p className="text-xl text-gray-600">See the dramatic results our clients achieve</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Interactive Transformations</h2>
+            <p className="text-xl text-gray-600">Drag to reveal the dramatic results</p>
           </div>
           
           <div className="grid lg:grid-cols-2 gap-12">
-            {[
-              {
-                title: "Tech Startup Office",
-                location: "San Francisco, CA",
-                beforeImg: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=500",
-                afterImg: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=500",
-                savings: "₹2,65,000 buyback credit",
-                timeline: "2 weeks"
-              },
-              {
-                title: "Creative Agency",
-                location: "New York, NY", 
-                beforeImg: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500",
-                afterImg: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=500",
-                savings: "₹2,30,000 buyback credit",
-                timeline: "3 weeks"
-              }
-            ].map((project, index) => (
-              <div key={index} className="bg-gray-50 rounded-3xl p-8 hover:shadow-lg transition-shadow">
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="relative">
-                    <img src={project.beforeImg} alt="Before" className="w-full h-40 object-cover rounded-2xl" />
-                    <span className="absolute top-3 left-3 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-bold">BEFORE</span>
-                  </div>
-                  <div className="relative">
-                    <img src={project.afterImg} alt="After" className="w-full h-40 object-cover rounded-2xl" />
-                    <span className="absolute top-3 left-3 bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-bold">AFTER</span>
-                  </div>
-                </div>
-                
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.location}</p>
-                
-                <div className="flex justify-between items-center">
-                  <div className="text-sm">
-                    <div className="text-emerald-600 font-bold">{project.savings}</div>
-                    <div className="text-gray-600">{project.timeline} completion</div>
-                  </div>
-                  <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors">
-                    View Details
-                  </button>
-                </div>
-              </div>
-            ))}
+            <BeforeAfterSlider
+              beforeImage="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600"
+              afterImage="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600"
+              title="Tech Startup Office"
+              location="Mumbai, India"
+              savings="₹2,65,000"
+            />
+            <BeforeAfterSlider
+              beforeImage="https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=600"
+              afterImage="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600"
+              title="Creative Agency"
+              location="Bangalore, India"
+              savings="₹2,30,000"
+            />
           </div>
+        </div>
+      </section>
+
+      {/* Project Portfolio with Filters */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Project Portfolio</h2>
+            <p className="text-xl text-gray-600">Browse our completed transformations</p>
+          </div>
+          
+          <ProjectFilter />
+        </div>
+      </section>
+
+      {/* Advanced Contact Form */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Start Your Transformation</h2>
+            <p className="text-xl text-gray-600">Get a detailed quote with our smart form</p>
+          </div>
+          
+          <AdvancedForm />
         </div>
       </section>
 
