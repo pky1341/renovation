@@ -28,6 +28,10 @@ export default function AdminLayout({ children }) {
               <Users size={20} className="mr-3" />
               Inquiries
             </Link>
+            <Link href="/admin/users" className="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-100">
+              <Users size={20} className="mr-3" />
+              Users
+            </Link>
           </nav>
         </div>
 

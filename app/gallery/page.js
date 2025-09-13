@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Link from 'next/link'
 import { ArrowLeft, ArrowRight, X } from 'lucide-react'
 
 export default function GalleryPage() {
@@ -290,12 +291,12 @@ export default function GalleryPage() {
               </div>
               
               <div className="text-center">
-                <button
-                  onClick={() => setSelectedProject(null)}
+                <Link
+                  href="/contact"
                   className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-full font-semibold transition-colors mr-4"
                 >
                   Start Your Project
-                </button>
+                </Link>
                 <button
                   onClick={() => setSelectedProject(null)}
                   className="border-2 border-gray-300 text-gray-600 px-8 py-3 rounded-full font-semibold hover:border-emerald-500 hover:text-emerald-600 transition-colors"
@@ -316,12 +317,12 @@ export default function GalleryPage() {
             Join our gallery of successful transformations. Get your free consultation today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-emerald-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors">
+            <Link href="/contact" className="bg-white text-emerald-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-colors">
               Get Free Consultation
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-emerald-600 transition-colors">
+            </Link>
+            <Link href="/gallery" className="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-emerald-600 transition-colors">
               View More Projects
-            </button>
+            </Link>
           </div>
         </div>
       </section>

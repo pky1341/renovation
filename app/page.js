@@ -1,3 +1,4 @@
+"use client"
 import { Recycle, Hammer, Sparkles, Camera, Star, TrendingUp, Zap } from 'lucide-react'
 import Link from 'next/link'
 import CostCalculator from '../src/components/ui/cost-calculator.js'
@@ -56,10 +57,10 @@ export default function HomePage() {
               <Link href="/contact" className="btn-primary text-lg px-8 py-4 shadow-lg">
                 Get Free Assessment
               </Link>
-              <button className="flex items-center justify-center gap-2 text-lg px-8 py-4 border-2 border-gray-300 rounded-full hover:border-emerald-500 transition-colors">
+              <Link href="/gallery" className="flex items-center justify-center gap-2 text-lg px-8 py-4 border-2 border-gray-300 rounded-full hover:border-emerald-500 transition-colors">
                 <Camera size={20} className="text-emerald-600" />
                 Virtual Tour
-              </button>
+              </Link>
             </div>
           </div>
           
@@ -210,21 +211,67 @@ export default function HomePage() {
             <p className="text-xl text-gray-600">Browse our completed transformations</p>
           </div>
           
-          <ProjectFilter />
+          {/* <ProjectFilter 
+            projects={[
+              {
+                id: 1,
+                title: "Tech Startup Office",
+                category: "office",
+                location: "Mumbai, India",
+                size: "2,500 sq ft",
+                timeline: "3 weeks",
+                beforeImage: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+                afterImage: "https://images.unsplash.com/photo-1497366216548-37526070297c",
+                description: "Complete transformation of a dated office space"
+              },
+              {
+                id: 2,
+                title: "Creative Agency",
+                category: "office",
+                location: "Bangalore, India",
+                size: "1,800 sq ft",
+                timeline: "2 weeks",
+                beforeImage: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43",
+                afterImage: "https://images.unsplash.com/photo-1559136555-9303baea8ebd",
+                description: "Vibrant creative space transformation"
+              },
+              {
+                id: 3,
+                title: "Law Firm Office",
+                category: "office",
+                location: "Delhi, India",
+                size: "3,200 sq ft",
+                timeline: "4 weeks",
+                beforeImage: "https://images.unsplash.com/photo-1497366811353-6870744d04b2",
+                afterImage: "https://images.unsplash.com/photo-1631193816258-28b44b21e78b",
+                description: "Professional law firm modernization"
+              }
+            ]}
+            onFilterChange={(filtered) => console.log('Filtered projects:', filtered)}
+          /> */}
         </div>
       </section>
 
       {/* Advanced Contact Form */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Start Your Transformation</h2>
             <p className="text-xl text-gray-600">Get a detailed quote with our smart form</p>
           </div>
           
-          <AdvancedForm />
+          <AdvancedForm 
+            onSubmit={async (formData) => {
+              const response = await fetch('/api/contacts', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+              })
+              if (!response.ok) throw new Error('Failed to submit')
+            }}
+          />
         </div>
-      </section>
+      </section> */}
 
       {/* Social Proof */}
       <section className="py-20 bg-emerald-600 text-white">
@@ -303,9 +350,9 @@ export default function HomePage() {
             <Link href="/contact" className="bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-4 rounded-full font-bold text-lg transition-colors shadow-xl">
               Book Free Assessment
             </Link>
-            <button className="border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-gray-900 transition-colors">
+            <a href="tel:+919876543210" className="border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-gray-900 transition-colors">
               Call: +91 98765 43210
-            </button>
+            </a>
           </div>
           
           <div className="grid grid-cols-3 gap-8 text-sm opacity-75 max-w-md mx-auto">

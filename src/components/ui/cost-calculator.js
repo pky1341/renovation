@@ -239,9 +239,9 @@ export default function CostCalculator() {
                 </div>
               </div>
 
-              <button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-bold text-lg transition-colors shadow-lg">
+              <a href="/contact" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 rounded-xl font-bold text-lg transition-colors shadow-lg block text-center">
                 Get Detailed Quote
-              </button>
+              </a>
             </>
           )}
         </div>
