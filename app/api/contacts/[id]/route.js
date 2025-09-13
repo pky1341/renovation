@@ -1,20 +1,20 @@
 import { NextResponse } from 'next/server'
-import prisma from '../../../../src/database/connection.js'
+import { prisma } from '../../../../src/database/connection.js'
 
 export async function GET(request, { params }) {
   try {
-    const contact = await prisma.contact.findUnique({
+    const inquiry = await prisma.inquiry.findUnique({
       where: { id: parseInt(params.id) }
     })
     
-    if (!contact) {
+    if (!inquiry) {
       return NextResponse.json(
-        { success: false, message: 'Contact not found' },
+        { success: false, message: 'Inquiry not found' },
         { status: 404 }
       )
     }
     
-    return NextResponse.json({ success: true, data: contact })
+    return NextResponse.json({ success: true, data: inquiry })
   } catch (error) {
     return NextResponse.json(
       { success: false, message: error.message },
@@ -27,7 +27,7 @@ export async function PUT(request, { params }) {
   try {
     const body = await request.json()
     
-    const contact = await prisma.contact.update({
+    const inquiry = await prisma.inquiry.update({
       where: { id: parseInt(params.id) },
       data: {
         name: body.name,
@@ -41,8 +41,8 @@ export async function PUT(request, { params }) {
     
     return NextResponse.json({ 
       success: true, 
-      data: contact,
-      message: 'Contact updated successfully'
+      data: inquiry,
+      message: 'Inquiry updated successfully'
     })
   } catch (error) {
     return NextResponse.json(
@@ -54,13 +54,13 @@ export async function PUT(request, { params }) {
 
 export async function DELETE(request, { params }) {
   try {
-    await prisma.contact.delete({
+    await prisma.inquiry.delete({
       where: { id: parseInt(params.id) }
     })
     
     return NextResponse.json({ 
       success: true, 
-      message: 'Contact deleted successfully'
+      message: 'Inquiry deleted successfully'
     })
   } catch (error) {
     return NextResponse.json(

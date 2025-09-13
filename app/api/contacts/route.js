@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
-import prisma from '../../../src/database/connection.js'
+import { prisma } from '../../../src/database/connection.js'
 
 export async function POST(request) {
   try {
     const body = await request.json()
     
-    const contact = await prisma.contact.create({
+    const inquiry = await prisma.inquiry.create({
       data: {
         name: body.name,
         email: body.email,
@@ -18,8 +18,8 @@ export async function POST(request) {
     
     return NextResponse.json({ 
       success: true, 
-      data: contact,
-      message: 'Contact created successfully'
+      data: inquiry,
+      message: 'Inquiry created successfully'
     }, { status: 201 })
   } catch (error) {
     console.error('Prisma error:', error)
@@ -68,11 +68,11 @@ export async function GET(request) {
       if (filterObj.spaceType) query.where.spaceType = filterObj.spaceType
     }
 
-    const contacts = await prisma.contact.findMany(query)
-    const total = await prisma.contact.count({ where: query.where })
+    const inquiries = await prisma.inquiry.findMany(query)
+    const total = await prisma.inquiry.count({ where: query.where })
     
-    const response = NextResponse.json({ success: true, data: contacts })
-    response.headers.set('Content-Range', `contacts 0-${contacts.length}/${total}`)
+    const response = NextResponse.json({ success: true, data: inquiries })
+    response.headers.set('Content-Range', `inquiries 0-${inquiries.length}/${total}`)
     
     return response
   } catch (error) {

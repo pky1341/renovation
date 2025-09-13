@@ -1,3 +1,4 @@
+'use client'
 import { Card, CardContent, CardHeader, Title } from '../ui/card'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
 
@@ -17,8 +18,7 @@ const statusData = [
 ]
 
 export const Dashboard = () => (
-  <div className="p-6">
-    <Title title="Dashboard" />
+  <div>
     
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
       <Card>
